@@ -94,3 +94,4 @@ Make your changes and test them thoroughly
 Create a pull request
 License
 The Space Exploration CLI is licensed under the MIT License.
+#(using pip install exoplanet from PyPi)

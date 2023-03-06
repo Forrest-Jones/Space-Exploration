@@ -1,8 +1,10 @@
 import click
-from spacetravel.db.models import Planet, Session
-from spacetravel.travel import calculate_travel_time
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from .models import Planet
+from .travel_time import calculate_travel_time
 
-session = Session()
+session = sessionmaker(bind=create_engine('sqlite:///spacetravel.db'))()
 
 @click.group()
 def cli():
@@ -55,14 +57,19 @@ def filter(system, distance):
 @click.option('--propulsion', type=click.Choice(['1', '2', '3'], case_sensitive=False),
               prompt='Please select a propulsion system [1: Ion Thruster, 2: Nuclear Pulse Propulsion, 3: Alcubierre Drive]:')
 def travel(planet_name, propulsion):
+    planet = session.query(Planet).filter_by(name=planet_name).first()
+    if planet is None:
+        click.echo(f'Planet {planet_name} not found')
+        return
+
     travel_time = calculate_travel_time(planet_name, propulsion)
     if travel_time == -1:
-        click.echo('Invalid planet name or propulsion system')
+        click.echo('Invalid propulsion system')
     else:
         click.echo(f'Travel time to {planet_name}: {travel_time} years')
 
 @cli.command()
-def exit():
+def exit_():
     click.echo('Goodbye!')
     raise SystemExit
 

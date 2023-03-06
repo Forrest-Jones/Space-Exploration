@@ -1,3 +1,3 @@
-# lib/__init__.py
+from sqlalchemy.ext.declarative import declarative_base
 
-from .cli import cli
+Base = declarative_base()

@@ -1,8 +1,9 @@
 import click
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .models import Planet
-from .travel_time import calculate_travel_time
+from models import Planet
+from travel_time import calculate_travel_time
+
 
 session = sessionmaker(bind=create_engine('sqlite:///spacetravel.db'))()
 

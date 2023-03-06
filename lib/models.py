@@ -2,7 +2,9 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, UniqueCons
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('sqlite:///spacetravel.db', echo=True)
-Base = declarative_base(bind=engine)
+Base = declarative_base()
+
+
 
 class Planet(Base):
     __tablename__ = 'exo_planets'

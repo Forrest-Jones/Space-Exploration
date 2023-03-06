@@ -1,19 +1,20 @@
 # Space-Exploration
-Space Exploration CLI 
 
-Space Travel CLI
+Space Exploration CLI
+
 Introduction
-The Space Travel CLI is a command-line interface tool that allows users to get information on potentially habitable planets discovered by space agencies around the world. With this CLI, users can access information such as the name of the planet, the star system where it is located, and the distance to it.
+
+The Space Exploration CLI is a command-line interface tool that allows users to get information on potentially habitable planets discovered by space agencies around the world. With this CLI, users can access information such as the name of the planet, the star system where it is located, and the distance to it.
 
 Getting Started
-To get started with the Space Travel CLI, follow the steps below:
+To get started with the Space Exploration CLI, follow the steps below:
 
 Clone the Repository
 Clone this repository to your local machine using the following command:
 
 bash
 Copy code
-git clone https://github.com/<your-username>/space-travel-cli.git
+git clone https://github.com/<your-username>/space-exploration-cli.git
 Install Dependencies
 Navigate to the project directory and install the dependencies by running the following command:
 
@@ -39,7 +40,7 @@ bash
 Copy code
 python lib/cli.py
 Usage
-The Space Travel CLI allows users to search for potentially habitable planets based on their preferences. Users can filter planets by star system or distance.
+The Space Exploration CLI allows users to search for potentially habitable planets based on their preferences. Users can filter planets by star system or distance.
 
 Command Line Arguments
 The following command-line arguments are available:
@@ -78,18 +79,18 @@ bash
 Copy code
 python lib/cli.py exit
 Dependencies
-The Space Travel CLI relies on the following dependencies:
+The Space Exploration CLI relies on the following dependencies:
 
 Python 3.8
 SQLAlchemy
 Alembic
 Click
 Contributing
-Contributions to the Space Travel CLI are welcome. To contribute, please follow the steps below:
+Contributions to the Space Exploration CLI are welcome. To contribute, please follow the steps below:
 
 Fork the repository
 Create a new branch for your feature or bug fix
 Make your changes and test them thoroughly
 Create a pull request
 License
-The Space Travel CLI is licensed under the MIT License.
+The Space Exploration CLI is licensed under the MIT License.

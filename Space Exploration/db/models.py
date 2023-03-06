@@ -13,3 +13,12 @@ class Planet(Base):
     name = Column(String(255), nullable=False)
     star_system = Column(String(255), nullable=False)
     distance = Column(Float, nullable=False)
+
+    __table_args__ = (
+        # Ensure that the planet name is unique
+        UniqueConstraint('name', name='unique_planet_name'),
+        # Ensure that the planet name, star system, and distance are not empty
+        CheckConstraint('name != ""', name='non_empty_planet_name'),
+        CheckConstraint('star_system != ""', name='non_empty_star_system'),
+        CheckConstraint('distance > 0', name='positive_distance'),
+    )

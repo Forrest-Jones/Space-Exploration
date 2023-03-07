@@ -1,17 +1,14 @@
 import click
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from models import Planet
-from travel_time import calculate_travel_time
-from models import create_tables
+from db import Planet, create_tables, session
+
+
 create_tables()
 
-
-session = sessionmaker(bind=create_engine('sqlite:///spacetravel.db'))()
 
 @click.group()
 def cli():
     pass
+
 
 @cli.command()
 def list():
@@ -19,6 +16,7 @@ def list():
 
     for planet in planets:
         click.echo(f'{planet.name} ({planet.star_system}): {planet.distance} light-years from Earth')
+
 
 @cli.command()
 @click.argument('planet_name')
@@ -31,6 +29,7 @@ def info(planet_name):
         click.echo(f'Name: {planet.name}')
         click.echo(f'Star System: {planet.star_system}')
         click.echo(f'Distance from Earth: {planet.distance} light-years')
+
 
 @cli.command()
 @click.option('--system', help='Filter planets by the star system where they are located.')
@@ -55,6 +54,7 @@ def filter(system, distance):
     for planet in planets:
         click.echo(f'{planet.name} ({planet.star_system}): {planet.distance} light-years from Earth')
 
+
 @cli.command()
 @click.argument('planet_name')
 @click.option('--propulsion', type=click.Choice(['1', '2', '3'], case_sensitive=False),
@@ -71,10 +71,12 @@ def travel(planet_name, propulsion):
     else:
         click.echo(f'Travel time to {planet_name}: {travel_time} years')
 
+
 @cli.command()
 def exit_():
     click.echo('Goodbye!')
     raise SystemExit
+
 
 if __name__ == '__main__':
     try:

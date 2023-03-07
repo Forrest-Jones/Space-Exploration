@@ -5,7 +5,6 @@ engine = create_engine('sqlite:///spacetravel.db', echo=True)
 Base = declarative_base()
 
 
-
 class Planet(Base):
     __tablename__ = 'exo_planets'
 
@@ -22,3 +21,7 @@ class Planet(Base):
         CheckConstraint('star_system != ""', name='non_empty_star_system'),
         CheckConstraint('distance > 0', name='positive_distance'),
     )
+
+
+def create_tables():
+    Base.metadata.create_all(engine)

@@ -3,6 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Planet
 from travel_time import calculate_travel_time
+from models import create_tables
+create_tables()
 
 
 session = sessionmaker(bind=create_engine('sqlite:///spacetravel.db'))()
